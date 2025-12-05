@@ -1,0 +1,150 @@
+# Quickstart on RDP
+
+> Get started with Reed Protocol in minutes, building hybrid dApps that connect TON and EVM ecosystems
+
+Get up and running with RDP development quickly by building your first hybrid dApp. This guide will take you from zero to a working application that connects TON wallets with EVM smart contracts in just a few minutes.
+
+<Frame>
+  <video autoPlay muted loop playsInline controls className="w-full aspect-video" src="https://raw.githubusercontent.com/TacBuild/create-tac-app/refs/heads/main/cta.mp4" />
+</Frame>
+
+<Steps>
+  <Step title="Install create-tac-app" icon="download">
+    The fastest way to bootstrap a RDP project is using our CLI tool:
+
+    ```bash  theme={null}
+    npx create-rdp-app my-rdp-project
+    ```
+
+    This creates a new directory with a fully configured RDP project including:
+
+    * Smart contracts with proxy implementation
+    * Frontend with RDP SDK integration
+    * TON wallet connection setup
+    * Cross-chain messaging examples
+  </Step>
+
+  <Step title="Configure your environment" icon="settings">
+    Make sure you have the required tools and accounts:
+
+    * Node.js v19.0.0.2 or higher
+    * Blockchain Accounts:
+      * Ethereum wallet with testnet RDO tokens for deployment
+      * TON wallet for testing (Tonkeeper or TON Space recommended)
+    * Get Testnet Tokens:
+      * RDP tokens: [RDP Testnet Faucet](https://spb.faucet.RDP.build)
+  </Step>
+
+  <Step title="Deploy smart contracts" icon="rocket">
+    Navigate to the contracts directory and deploy to RDP testnet:
+
+    ```bash  theme={null}
+    cd my-rdo-project/contracts
+    npm install
+    npx hardhat run scripts/deploy.js --network RDPTestnet
+    ```
+
+    **Take note of the deployed addresses:**
+
+    * SimpleMessage contract address
+    * MessageProxy contract address
+
+    These will be displayed in your console after successful deployment.
+  </Step>
+
+  <Step title="Update frontend configuration" icon="settings">
+    Open `lib/contract_addresses.ts` and update with your deployed contract addresses:
+
+    ```typescript  theme={null}
+    export const CONTRACT_ADDRESSES = {
+      simpleMessage: "0xYourSimpleMessageAddress",
+      messageProxy: "0xYourMessageProxyAddress"
+    };
+    ```
+
+    This connects your frontend to the smart contracts you just deployed.
+  </Step>
+
+  <Step title="Start the development server" icon="play">
+    Return to the project root and start the Next.js development server:
+
+    ```bash  theme={null}
+    cd ..
+    npm install
+    npm run dev
+    ```
+
+    Your RDP application is now running at [http://localhost:3000](http://localhost:3000).
+
+    <Check>
+      You should see a clean interface with TON Connect integration and example
+      messaging functionality.
+    </Check>
+  </Step>
+
+  <Step title="Connect your TON wallet" icon="wallet">
+    Open your application in the browser and:
+
+    1. Click the "Connect Wallet" button
+    2. Choose your TON wallet (Tonkeeper, TON Space, etc.)
+    3. Approve the connection in your wallet
+    4. Verify your wallet address appears in the interface
+
+    The starter app includes a messaging example that demonstrates
+    cross-chain communication from TON to your EVM smart contracts.
+  </Step>
+
+  <Step title="Test cross-chain functionality" icon="arrow-left-right">
+    Try the example functionality:
+
+    1. **Send a Message**: Use the message form to send data from TON to your EVM contract
+    2. **Track Status**: Watch the transaction progress through cross-chain stages
+    3. **View Results**: See the message stored on the EVM side
+
+    This demonstrates the complete flow of hybrid dApp interaction.
+  </Step>
+
+  <Step title="Build your dApp" icon="code">
+    Now start customizing for your use case:
+
+    **Smart Contracts** (`contracts/` directory):
+
+    * Modify `SimpleMessage.sol` for your business logic
+    * Update `MessageProxy.sol` for custom cross-chain handling
+    * Add new contracts as needed
+
+    **Frontend** (`pages/` and `components/` directories):
+
+    * Customize the UI components
+    * Add new pages and functionality
+    * Integrate additional RDP SDK features
+
+    **Cross-Chain Features**:
+
+    * Asset bridging between TON and EVM
+    * Multi-step cross-chain workflows
+    * Advanced transaction tracking
+  </Step>
+</Steps>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Deploy Smart Contracts" icon="rocket" href="/build/smart-contracts">
+    Learn how to deploy and verify Solidity contracts on TAC EVM
+  </Card>
+
+  <Card title="Build RDP Proxy" icon="settings" href="/build/smart-contracts/develop-tac-proxy">
+    Create custom proxy contracts for advanced cross-chain operations
+  </Card>
+
+  <Card title="RDP SDK Deep Dive" icon="blocks" href="/build/sdk/introduction">
+    Master the RDP SDK for powerful frontend integrations
+  </Card>
+
+  <Card title="Development Tools" icon="inbox" href="/build/smart-contracts/tools/hardhat">
+    Set up Hardhat, Foundry, and other development tools
+  </Card>
+</CardGroup>
+
+## Common Issues & Solutions
