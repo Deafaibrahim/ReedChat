@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReedChat.fun - Earn $JOB by blogging</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>ReedChat is the first blockchain platform for bloggers</h1>
+    <p>Connect, own your content, complete tasks, and earn Gems that convert to $JOB tokens.</p>
+  </header>
+
+  <div class="tabs">
+    <button onclick="showTab('create')">➕ Create</button>
+    <button onclick="showTab('wallet')">💼 Wallet</button>
+    <button onclick="showTab('chat')">💬 Chat</button>
+    <button onclick="showTab('notif')">🔔<span id="notifCount">3</span></button>
+    <button onclick="showTab('profile')">👤 Me</button>
+  </div>
+
+  <div id="create" class="tab">
+    <button id="connectBtn" onclick="connectWallet()">[Connect BSC Wallet] → Login Instantly</button>
+    <p>Powered by MetaMask / TrustWallet / SafePal</p>
+    <p>No password needed. Your wallet is your account.</p>
+    <p>Network: BSC Mainnet only</p>
+    
+    <h3>Files</h3>
+    <button onclick="uploadFile()">[Upload Instant]</button>
+    <p>Storage: <span id="storage">2GB / 10GB used</span></p>
+    <p>Status: <span id="uploadStatus">Idle</span></p>
+
+    <h3>Create Post</h3>
+    <input id="title" placeholder="Title: [________]">
+    <textarea id="content" placeholder="Content: [________]"></textarea>
+    <input type="file" id="imgUpload">
+    <p>Gems Earned: +0.20</p>
+    <button onclick="publishPost()">[Publish Post]</button>
+  </div>
+
+  <div id="wallet" class="tab hidden">
+    <h3>$JOB Cloud Mining</h3>
+    <p>Status: Mining 24/7 ✓</p>
+    <p>Hash Rate: 120 H/s</p>
+    <p>Earned Today: 0.50 $JOB</p>
+    <p>Mined Balance: <span id="minedBal">320.75</span> $JOB</p>
+    <p>Available Balance: <span id="availBal">1250</span> $JOB</p>
+    <button onclick="moveToWallet()">[Move Now] → Moved ✓ Instant</button>
+    
+    <h3>Stake $JOB</h3>
+    <input id="stakeAmt" value="500"> $JOB
+    <select id="lockPeriod"><option>30 days</option><option>90 days</option><option>180 days</option></select>
+    <p>APY: 15% / 25% / 40%</p>
+    <button onclick="stakeJOB()">[Stake Now] → Staked ✓ Instant</button>
+    <p id="stakeInfo"></p>
+
+    <h3>Withdraw $JOB</h3>
+    <p>Balance: <span id="withdrawBal">1250</span> $
